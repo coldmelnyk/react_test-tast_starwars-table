@@ -1,4 +1,4 @@
-import { People, Planet } from '../types';
+import { Person, Planet } from '../types';
 
 const BASE_URL = 'https://swapi.info/api';
 
@@ -11,7 +11,7 @@ function wait(delay: number): Promise<void> {
 }
 
 function get<T>(url: string): Promise<T> {
-  const fullURL = `${BASE_URL}${url}.json`;
+  const fullURL = `${BASE_URL}${url}`;
 
   // we add some delay to see how the loader works
   return wait(300)
@@ -19,7 +19,7 @@ function get<T>(url: string): Promise<T> {
     .then(res => res.json());
 }
 
-export const getPeople = () => get<People[]>('/people');
+export const getPeople = () => get<Person[]>('/people');
 
 export const getPlanet = (planetId: number) =>
   get<Planet>(`/planets/${planetId}`);
