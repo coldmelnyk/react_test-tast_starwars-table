@@ -1,2 +1,2 @@
-export * from './People';
+export * from './Person';
 export * from './Planet';
