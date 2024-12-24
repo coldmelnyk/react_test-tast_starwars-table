@@ -40,7 +40,7 @@ export const PeopleTable = () => {
         <PlanetTab onSelectedPlanet={setSelectedPlanet} selectedPlanet={selectedPlanet} />
       )}
 
-      <div className="p-3 rounded-lg mx-11 shadow-md bg-white overflow-x-auto">
+      <div className="p-3 rounded-lg mx-11 shadow-md bg-white overflow-x-auto ring-1 ring-gray-900/5">
         <div className="grid grid-cols-4 w-full min-w-[600px]">
           <div className="contents">
             <div className="font-bold pb-2 border-b-[1px]">Character Name</div>
