@@ -11,7 +11,7 @@ function wait(delay: number): Promise<void> {
 function get<T>(url: string): Promise<T> {
   const fullURL = `${BASE_URL}${url}`;
 
-  return wait(500)
+  return wait(300)
     .then(() => fetch(fullURL))
     .then(res => res.json());
 }
