@@ -10,7 +10,8 @@ export const PeopleTable = () => {
   const [people, setPeople] = useState<Person[] | null>(null);
   const [showPlanet, setShowPlanet] = useState(false);
 
-  const isPeopleExistAndHasOwnPlanets = people && people.every(person => person.planet);
+  const isPeopleExistAndHasOwnPlanets =
+    people && people.every(person => person.planet);
 
   useEffect(() => {
     getPeople()
@@ -37,25 +38,24 @@ export const PeopleTable = () => {
     <>
       {showPlanet && <PlanetTab onShowPlanet={setShowPlanet} />}
 
-      <div className="flex flex-col justify-center items-center p-3 rounded-lg mx-11 shadow-md bg-white">
-        <div className="grid grid-cols-4 justify-between items-center min-w-full">
-          <div className='font-bold pb-2 border-b-[1px]'>Character Name</div>
-          <div className='font-bold pb-2 border-b-[1px]'>Gender</div>
-          <div className='font-bold pb-2 border-b-[1px]'>Birth Year</div>
-          <div className='font-bold pb-2 border-b-[1px]'>Home World</div>
+      <div className="p-3 rounded-lg mx-11 shadow-md bg-white">
+        <div className="grid grid-cols-4 w-full">
+          <div className='contents'>
+            <div className="font-bold pb-2 border-b-[1px]">Character Name</div>
+            <div className="font-bold pb-2 border-b-[1px]">Gender</div>
+            <div className="font-bold pb-2 border-b-[1px]">Birth Year</div>
+            <div className="font-bold pb-2 border-b-[1px]">Home World</div>
+          </div>
 
-          {isPeopleExistAndHasOwnPlanets && (
-            <>
-              {people.map(person => (
-                <PersonTab
-                  key={person.name}
-                  people={people}
-                  person={person}
-                  onShowPlanet={setShowPlanet}
-                />
-              ))}
-            </>
-          )}
+          {isPeopleExistAndHasOwnPlanets &&
+            people.map(person => (
+              <PersonTab
+                key={person.name}
+                person={person}
+                people={people}
+                onShowPlanet={setShowPlanet}
+              />
+            ))}
         </div>
       </div>
     </>

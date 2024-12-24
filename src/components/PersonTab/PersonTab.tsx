@@ -17,41 +17,43 @@ export const PersonTab: React.FC<Props> = ({
 
   return (
     <>
-      <div
-        className={cn({
-          'border-b-0 pb-0 pt-2': isLastPerson,
-          'py-2 border-b-[1px]': !isLastPerson,
-        })}
-      >
-        {person.name}
-      </div>
+      <div className="contents">
+        <div
+          className={cn({
+            'border-b-0 pb-0 pt-2': isLastPerson,
+            'py-2 border-b-[1px]': !isLastPerson
+          })}
+        >
+          {person.name}
+        </div>
 
-      <div
-        className={cn({
-          'border-b-0 pb-0 pt-2': isLastPerson,
-          'py-2 border-b-[1px]': !isLastPerson,
-        })}
-      >
-        {person.gender}
-      </div>
+        <div
+          className={cn({
+            'border-b-0 pb-0 pt-2': isLastPerson,
+            'py-2 border-b-[1px]': !isLastPerson
+          })}
+        >
+          {person.gender}
+        </div>
 
-      <div
-        className={cn({
-          'border-b-0 pb-0 pt-2': isLastPerson,
-          'py-2 border-b-[1px]': !isLastPerson,
-        })}
-      >
-        {person.birth_year}
-      </div>
+        <div
+          className={cn({
+            'border-b-0 pb-0 pt-2': isLastPerson,
+            'py-2 border-b-[1px]': !isLastPerson
+          })}
+        >
+          {person.birth_year}
+        </div>
 
-      <div
-        className={cn('cursor-pointer', {
-          'border-b-0 pb-0 pt-2': isLastPerson,
-          'py-2 border-b-[1px]': !isLastPerson,
-        })}
-        onClick={() => onShowPlanet(status => !status)}
-      >
-        {person.planet?.name}
+        <div
+          className={cn('cursor-pointer', {
+            'border-b-0 pb-0 pt-2': isLastPerson,
+            'py-2 border-b-[1px]': !isLastPerson
+          })}
+          onClick={() => onShowPlanet(status => !status)}
+        >
+          <span className='block animate-pulse'>{person.planet?.name}</span>
+        </div>
       </div>
     </>
   );
