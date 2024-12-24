@@ -36,7 +36,7 @@ export const PeopleTable = () => {
       {showPlanet && <PlanetTab onShowPlanet={setShowPlanet} />}
 
       <div className="flex flex-col justify-center items-center p-3 mt-[20lvh] rounded-lg mx-11 shadow-md">
-        <div className="grid grid-cols-4 gap-y-3 justify-between min-w-full">
+        <div className="grid grid-cols-4 gap-y-3 justify-between items-center min-w-full">
           <div>Character Name</div>
           <div>Gender</div>
           <div>Birth Year</div>
