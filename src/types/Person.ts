@@ -1,3 +1,5 @@
+import { Planet } from "./Planet";
+
 export interface Person {
   name: string;
   height: string;
@@ -15,4 +17,5 @@ export interface Person {
   created: string;
   edited: string;
   url: string;
+  planet?: Planet;
 }

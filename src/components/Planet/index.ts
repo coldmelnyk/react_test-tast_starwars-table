@@ -1,1 +1,1 @@
-export * from './Planet';
+export * from './PlanetTab';

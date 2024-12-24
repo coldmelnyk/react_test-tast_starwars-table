@@ -8,11 +8,11 @@ interface Props {
 
 export const PersonTab: React.FC<Props> = ({ person, onShowPlanet }) => {
   return (
-    <div className='flex'>
-      <div>
-        {person.name} {person.gender} {person.birth_year}
-      </div>
-      <div onClick={() => onShowPlanet(true)}>Homeworld</div>
-    </div>
+    <>
+      <div>{person.name}</div>
+      <div> {person.gender}</div>
+      <div>{person.birth_year}</div>
+      <div onClick={() => onShowPlanet(true)}>{person.planet?.name}</div>
+    </>
   );
 };
