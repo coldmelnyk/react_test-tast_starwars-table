@@ -2,8 +2,6 @@ import { Person, Planet } from '../types';
 
 const BASE_URL = 'https://swapi.info/api';
 
-// This function creates a promise
-// that is resolved after a given delay
 function wait(delay: number): Promise<void> {
   return new Promise(resolve => {
     setTimeout(resolve, delay);
@@ -13,8 +11,7 @@ function wait(delay: number): Promise<void> {
 function get<T>(url: string): Promise<T> {
   const fullURL = `${BASE_URL}${url}`;
 
-  // we add some delay to see how the loader works
-  return wait(300)
+  return wait(600)
     .then(() => fetch(fullURL))
     .then(res => res.json());
 }

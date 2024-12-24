@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getPeople } from '../../utils/api';
 import { Person } from '../../types';
 import { PersonTab } from '../PersonTab';
+import { getRandomFiveNumbers } from '../../utils/getRandomFiveNumbers';
 
 export const PeopleTable = () => {
   const [people, setPeople] = useState<Person[] | null>(null);
@@ -9,7 +10,13 @@ export const PeopleTable = () => {
   useEffect(() => {
     getPeople()
       .then(people => {
-        setPeople(people);
+        const randomFivePeople: Array<Person> = [];
+        const randomFiveIndexes = getRandomFiveNumbers(0, people.length - 1);
+        randomFiveIndexes.forEach(index => {
+          randomFivePeople.push(people[index]);
+        });
+
+        setPeople(randomFivePeople);
       })
       .catch(error => {
         alert(error);
