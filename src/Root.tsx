@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { Paths } from './enums';
 import { App } from './App';
-import { NotFound, PeopleTable, Planet } from './components';
+import { PeopleTable } from './components';
 
 export const Root = () => {
   return (
@@ -9,15 +9,8 @@ export const Root = () => {
       <Routes>
         <Route path={Paths.HOME} element={<App />}>
           <Route index element={<PeopleTable />} />
-          <Route path={Paths.PLANETS} element={<Navigate to={Paths.HOME} />} />
-          <Route path={Paths.PLANET} element={
-            <>
-              <PeopleTable />
-              <Planet />
-            </>
-          } />
         </Route>
-        <Route path={Paths.NOT_FOUND} element={<NotFound />} />
+        <Route path={Paths.NOT_FOUND} element={<Navigate to={Paths.HOME} />} />
       </Routes>
     </BrowserRouter>
   );
