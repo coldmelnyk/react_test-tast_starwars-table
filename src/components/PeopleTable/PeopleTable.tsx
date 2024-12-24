@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getPeople } from '../../utils/api';
-import { Person } from '../../types';
+import { Person, Planet } from '../../types';
 import { PersonTab } from '../PersonTab';
 import { PlanetTab } from '../Planet';
 import { getFiveRandomPeople } from '../../utils/getFiveRandomPeople';
@@ -8,7 +8,7 @@ import { getPlanetWithThePerson } from '../../utils/getPlanetWithThePerson';
 
 export const PeopleTable = () => {
   const [people, setPeople] = useState<Person[] | null>(null);
-  const [showPlanet, setShowPlanet] = useState(false);
+  const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
 
   const isPeopleExistAndHasOwnPlanets =
     people && people.every(person => person.planet);
@@ -36,11 +36,13 @@ export const PeopleTable = () => {
 
   return (
     <>
-      {showPlanet && <PlanetTab onShowPlanet={setShowPlanet} />}
+      {selectedPlanet && (
+        <PlanetTab onSelectedPlanet={setSelectedPlanet} selectedPlanet={selectedPlanet} />
+      )}
 
-      <div className="p-3 rounded-lg mx-11 shadow-md bg-white">
-        <div className="grid grid-cols-4 w-full">
-          <div className='contents'>
+      <div className="p-3 rounded-lg mx-11 shadow-md bg-white overflow-x-auto">
+        <div className="grid grid-cols-4 w-full min-w-[600px]">
+          <div className="contents">
             <div className="font-bold pb-2 border-b-[1px]">Character Name</div>
             <div className="font-bold pb-2 border-b-[1px]">Gender</div>
             <div className="font-bold pb-2 border-b-[1px]">Birth Year</div>
@@ -53,7 +55,8 @@ export const PeopleTable = () => {
                 key={person.name}
                 person={person}
                 people={people}
-                onShowPlanet={setShowPlanet}
+                onSelectedPlanet={setSelectedPlanet}
+                selectedPlanet={selectedPlanet}
               />
             ))}
         </div>

@@ -1,19 +1,30 @@
 import React from 'react';
-import { Person } from '../../types';
+import { Person, Planet } from '../../types';
 import cn from 'classnames';
 
 interface Props {
   person: Person;
   people: Person[];
-  onShowPlanet: React.Dispatch<React.SetStateAction<boolean>>;
+  onSelectedPlanet: React.Dispatch<React.SetStateAction<Planet | null>>;
+  selectedPlanet: Planet | null;
 }
 
 export const PersonTab: React.FC<Props> = ({
   person,
   people,
-  onShowPlanet
+  onSelectedPlanet,
+  selectedPlanet,
 }) => {
   const isLastPerson = person === people[people.length - 1];
+  const handleSelectedPlanet = (planet: Planet) => {
+    if (selectedPlanet === planet) {
+      onSelectedPlanet(null);
+    }
+
+    if (selectedPlanet !== planet) {
+      onSelectedPlanet(planet);
+    }
+  };
 
   return (
     <>
@@ -50,7 +61,7 @@ export const PersonTab: React.FC<Props> = ({
             'border-b-0 pb-0 pt-2': isLastPerson,
             'py-2 border-b-[1px]': !isLastPerson
           })}
-          onClick={() => onShowPlanet(status => !status)}
+          onClick={() => handleSelectedPlanet(person.planet!)}
         >
           <span className='block animate-pulse'>{person.planet?.name}</span>
         </div>
