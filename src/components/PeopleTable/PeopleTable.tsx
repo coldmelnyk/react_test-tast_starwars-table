@@ -31,22 +31,25 @@ export const PeopleTable = () => {
       });
   }, []);
 
+  console.log('people', people);
+
   return (
     <>
       {showPlanet && <PlanetTab onShowPlanet={setShowPlanet} />}
 
-      <div className="flex flex-col justify-center items-center p-3 mt-[20lvh] rounded-lg mx-11 shadow-md">
-        <div className="grid grid-cols-4 gap-y-3 justify-between items-center min-w-full">
-          <div>Character Name</div>
-          <div>Gender</div>
-          <div>Birth Year</div>
-          <div>Home World</div>
+      <div className="flex flex-col justify-center items-center p-3 rounded-lg mx-11 shadow-md bg-white">
+        <div className="grid grid-cols-4 justify-between items-center min-w-full">
+          <div className='font-bold pb-2 border-b-[1px]'>Character Name</div>
+          <div className='font-bold pb-2 border-b-[1px]'>Gender</div>
+          <div className='font-bold pb-2 border-b-[1px]'>Birth Year</div>
+          <div className='font-bold pb-2 border-b-[1px]'>Home World</div>
 
           {isPeopleExistAndHasOwnPlanets && (
             <>
               {people.map(person => (
                 <PersonTab
                   key={person.name}
+                  people={people}
                   person={person}
                   onShowPlanet={setShowPlanet}
                 />
