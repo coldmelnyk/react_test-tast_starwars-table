@@ -5,6 +5,7 @@ import { PersonTab } from '../PersonTab';
 import { PlanetTab } from '../Planet';
 import { getFiveRandomPeople } from '../../utils/getFiveRandomPeople';
 import { getPlanetWithThePerson } from '../../utils/getPlanetWithThePerson';
+import { motion } from 'motion/react';
 
 export const PeopleTable = () => {
   const [people, setPeople] = useState<Person[] | null>(null);
@@ -32,15 +33,16 @@ export const PeopleTable = () => {
       });
   }, []);
 
-  console.log('people', people);
-
   return (
     <>
       {selectedPlanet && (
-        <PlanetTab onSelectedPlanet={setSelectedPlanet} selectedPlanet={selectedPlanet} />
+        <PlanetTab
+          onSelectedPlanet={setSelectedPlanet}
+          selectedPlanet={selectedPlanet}
+        />
       )}
 
-      <div className="p-3 rounded-lg mx-11 shadow-md bg-white overflow-x-auto ring-1 ring-gray-900/5">
+      <motion.div initial={{ opacity: 0, scale: 0.4 }} animate={{ opacity: 1, scale: 1, transition: { delay: 1 } }} className="p-3 rounded-lg mx-11 shadow-md bg-white overflow-x-auto ring-1 ring-gray-900/5">
         <div className="grid grid-cols-4 w-full min-w-[600px]">
           <div className="contents">
             <div className="font-bold pb-2 border-b-[1px]">Character Name</div>
@@ -60,7 +62,7 @@ export const PeopleTable = () => {
               />
             ))}
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

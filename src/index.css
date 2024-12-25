@@ -2,14 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
   * {
     text-wrap: nowrap;
   }
 
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  
+  thead, tbody {
+    display: table-header-group;
+    vertical-align: middle;
+  }
+  
+  tr {
+    display: table-row;
+    vertical-align: inherit;
+    border: none;
+  }
+  
+  th, td {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: inherit;
+    vertical-align: top;
+    font-weight: normal;
+  }  
+}
+
+@layer components {
   .modal-center {
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .grid-for-modal {
+    display: grid;
+    grid-template-columns: 100px 200px;
+  }
+  
+  .grid-for-modal div {
+    max-width: 300px;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
