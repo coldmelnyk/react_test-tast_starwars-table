@@ -1,13 +1,7 @@
-import React from "react";
-
-interface Props {
-  error: string;
-}
-
-export const ErrorModal: React.FC<Props> = ({ error }) => {
+export const ErrorModal = () => {
   return (
-    <div className="absolute text-white bg-red-500 p-6 top-0 left-[50%] translate-x-[-50%]">
-      {error}
-    </div>
+    <aside className="absolute text-white bg-red-500 p-6 top-[100px] left-[50%] translate-x-[-50%]">
+      Opps, can't get data from server :(
+    </aside>
   );
 };

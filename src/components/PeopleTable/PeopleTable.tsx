@@ -12,7 +12,6 @@ export const PeopleTable = () => {
   const [people, setPeople] = useState<Person[] | null>(null);
   const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
   const [isError, setIsError] = useState<Error>(Error.INITIAL);
-  const [error, setError] = useState<string>('');
 
   const arePeopleExistAndHasOwnPlanets =
     people && people.every(person => person.planet) && isError === Error.SUCCESS;
@@ -36,24 +35,20 @@ export const PeopleTable = () => {
         setPeople(peopleWithPlanets);
         setIsError(Error.SUCCESS);
       })
-      .catch(error => {
+      .catch(() => {
         setTimeout(() => {
           setIsError(Error.ERROR_WHILE_FETCHING);
-          setError(error.message);
         }, 2000);
-      })
-      .finally(() => {
-        if (isError === Error.ERROR_WHILE_FETCHING) {
-          setTimeout(() => {
-            setIsError(Error.INITIAL);
-          }, 5000);
-        }
+
+        setTimeout(() => {
+          setIsError(Error.INITIAL);
+        }, 5000);
       });
   }, []);
 
   return (
     <>
-      {isErrorTrue && <ErrorModal error={error} />}
+      {isErrorTrue && <ErrorModal />}
 
       {selectedPlanet && (
         <PlanetTab
@@ -76,6 +71,7 @@ export const PeopleTable = () => {
               <th className="font-bold pb-2 border-b-[1px] text-left">Home World</th>
             </tr>
           </thead>
+
           <tbody>
             {arePeopleExistAndHasOwnPlanets &&
               people.map(person => (
