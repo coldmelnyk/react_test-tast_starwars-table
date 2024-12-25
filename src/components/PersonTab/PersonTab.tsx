@@ -13,7 +13,7 @@ export const PersonTab: React.FC<Props> = ({
   person,
   people,
   onSelectedPlanet,
-  selectedPlanet,
+  selectedPlanet
 }) => {
   const isLastPerson = person === people[people.length - 1];
   const handleSelectedPlanet = (planet: Planet) => {
@@ -56,13 +56,14 @@ export const PersonTab: React.FC<Props> = ({
       </td>
 
       <td
-        className={cn('cursor-pointer', {
+        className={cn({
           'border-b-0 pb-0 pt-2': isLastPerson,
-          'py-2 border-b-[1px]': !isLastPerson
+          'py-2 border-b-[1px]': !isLastPerson,
+          'cursor-pointer': person.planet
         })}
         onClick={() => handleSelectedPlanet(person.planet!)}
       >
-        <span className='block animate-pulse'>{person.planet?.name}</span>
+        <span className="block animate-pulse">{person.planet?.name}</span>
       </td>
     </tr>
   );

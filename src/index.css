@@ -6,6 +6,10 @@
   * {
     text-wrap: nowrap;
   }
+  
+  button {
+    margin: 0;
+  }
 }
 
 @layer components {

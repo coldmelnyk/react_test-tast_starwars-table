@@ -1,5 +1,6 @@
 import React from 'react';
 import { Planet } from '../../types';
+import { motion } from 'motion/react';
 
 interface Props {
   onSelectedPlanet: React.Dispatch<React.SetStateAction<Planet | null>>;
@@ -15,7 +16,12 @@ export const PlanetTab: React.FC<Props> = ({
   return (
     <>
       {selectedPlanet && (
-        <div className="absolute text-white bg-sky-500 shadow-lg ring-1 ring-gray-900/5 modal-center rounded-lg p-2 grid-for-modal z-50 text-wrap">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.2 } }}
+          exit={{ opacity: 0 }}
+          className="absolute text-white bg-sky-500 shadow-lg ring-1 ring-gray-900/5 modal-center rounded-lg p-2 grid-for-modal z-50 text-wrap"
+        >
           <div className="contents">
             <div>Name:</div>
             <div>{selectedPlanet.name}</div>
@@ -36,10 +42,13 @@ export const PlanetTab: React.FC<Props> = ({
             <div>{selectedPlanet.population}</div>
           </div>
 
-          <div className="cursor-pointer mt-4 text-violet-100 animate-pulse" onClick={handleSelectedPlanet}>
+          <button
+            className="cursor-pointer mt-4 text-violet-100 animate-pulse"
+            onClick={handleSelectedPlanet}
+          >
             Close
-          </div>
-        </div>
+          </button>
+        </motion.div>
       )}
     </>
   );
