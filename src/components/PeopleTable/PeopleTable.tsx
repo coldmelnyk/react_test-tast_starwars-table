@@ -67,25 +67,28 @@ export const PeopleTable = () => {
         animate={{ opacity: 1, scale: 1, transition: { delay: 1 } }}
         className="p-3 rounded-lg mx-11 shadow-md bg-white overflow-x-auto ring-1 ring-gray-900/5"
       >
-        <div className="grid grid-cols-4 w-full min-w-[600px]">
-          <div className="contents">
-            <div className="font-bold pb-2 border-b-[1px]">Character Name</div>
-            <div className="font-bold pb-2 border-b-[1px]">Gender</div>
-            <div className="font-bold pb-2 border-b-[1px]">Birth Year</div>
-            <div className="font-bold pb-2 border-b-[1px]">Home World</div>
-          </div>
-
-          {arePeopleExistAndHasOwnPlanets &&
-            people.map(person => (
-              <PersonTab
-                key={person.name}
-                person={person}
-                people={people}
-                onSelectedPlanet={setSelectedPlanet}
-                selectedPlanet={selectedPlanet}
-              />
-            ))}
-        </div>
+        <table className="w-full min-w-[600px] border-collapse">
+          <thead>
+            <tr>
+              <th className="font-bold pb-2 border-b-[1px] text-left">Character Name</th>
+              <th className="font-bold pb-2 border-b-[1px] text-left">Gender</th>
+              <th className="font-bold pb-2 border-b-[1px] text-left">Birth Year</th>
+              <th className="font-bold pb-2 border-b-[1px] text-left">Home World</th>
+            </tr>
+          </thead>
+          <tbody>
+            {arePeopleExistAndHasOwnPlanets &&
+              people.map(person => (
+                <PersonTab
+                  key={person.name}
+                  person={person}
+                  people={people}
+                  onSelectedPlanet={setSelectedPlanet}
+                  selectedPlanet={selectedPlanet}
+                />
+              ))}
+          </tbody>
+        </table>
       </motion.div>
     </>
   );

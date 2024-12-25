@@ -27,45 +27,43 @@ export const PersonTab: React.FC<Props> = ({
   };
 
   return (
-    <>
-      <div className="contents">
-        <div
-          className={cn({
-            'border-b-0 pb-0 pt-2': isLastPerson,
-            'py-2 border-b-[1px]': !isLastPerson
-          })}
-        >
-          {person.name}
-        </div>
+    <tr>
+      <td
+        className={cn({
+          'border-b-0 pb-0 pt-2': isLastPerson,
+          'py-2 border-b-[1px]': !isLastPerson
+        })}
+      >
+        {person.name}
+      </td>
 
-        <div
-          className={cn({
-            'border-b-0 pb-0 pt-2': isLastPerson,
-            'py-2 border-b-[1px]': !isLastPerson
-          })}
-        >
-          {person.gender}
-        </div>
+      <td
+        className={cn({
+          'border-b-0 pb-0 pt-2': isLastPerson,
+          'py-2 border-b-[1px]': !isLastPerson
+        })}
+      >
+        {person.gender}
+      </td>
 
-        <div
-          className={cn({
-            'border-b-0 pb-0 pt-2': isLastPerson,
-            'py-2 border-b-[1px]': !isLastPerson
-          })}
-        >
-          {person.birth_year}
-        </div>
+      <td
+        className={cn({
+          'border-b-0 pb-0 pt-2': isLastPerson,
+          'py-2 border-b-[1px]': !isLastPerson
+        })}
+      >
+        {person.birth_year}
+      </td>
 
-        <div
-          className={cn('cursor-pointer', {
-            'border-b-0 pb-0 pt-2': isLastPerson,
-            'py-2 border-b-[1px]': !isLastPerson
-          })}
-          onClick={() => handleSelectedPlanet(person.planet!)}
-        >
-          <span className='block animate-pulse'>{person.planet?.name}</span>
-        </div>
-      </div>
-    </>
+      <td
+        className={cn('cursor-pointer', {
+          'border-b-0 pb-0 pt-2': isLastPerson,
+          'py-2 border-b-[1px]': !isLastPerson
+        })}
+        onClick={() => handleSelectedPlanet(person.planet!)}
+      >
+        <span className='block animate-pulse'>{person.planet?.name}</span>
+      </td>
+    </tr>
   );
 };
